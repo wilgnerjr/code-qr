@@ -12,4 +12,13 @@ generateBtn.addEventListener('click', () => {
     }
     generateBtn.innerHTML = 'Gerando um QR code';
     qrImg.src = `https://api.qrserver.com/v1/create-qr-code/?size=170x170&data=%24${qrValue}`;
-})
+    qrImg.addEventListener('load', () => {
+        generateBtn.innerHTML = 'Gerar Qr Code';
+        container.classList.add('active');
+    });
+});
+qrInput.addEventListener('keyup', () => {
+    if(!qrInput.value){
+        container.classList.remove('active');
+    };
+});
